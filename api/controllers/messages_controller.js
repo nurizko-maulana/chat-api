@@ -1,4 +1,4 @@
-const todosModel = require('../models/todos_model')
+const todosModel = require('../models/messages_model')
 const express = require('express')
 const router = express.Router()
 

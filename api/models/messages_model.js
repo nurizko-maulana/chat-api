@@ -12,20 +12,20 @@ class TodoModel {
     }
 
     get() {
-        return database.query('SELECT * FROM todos')
+        return database.query('SELECT * FROM message')
     }
 
     async getById(id) {
-        const rows = await database.query('SELECT * FROM todos WHERE id = ?', [id])
+        const rows = await database.query('SELECT * FROM message WHERE id = ?', [id])
         return rows[0]
     }
 
     create(todo) {
-        return database.query('INSERT INTO todos (title, completed) VALUES (?, ?)', [todo.title, todo.completed])
+        return database.query('INSERT INTO message (text, user) VALUES (?, ?)', [todo.text, todo.user])
     }
 
     delete(id) {
-        return database.query('DELETE FROM todos WHERE id = ? ', [id])
+        return database.query('DELETE FROM message WHERE id = ? ', [id])
     }
 
     update(id, todo) {
@@ -37,7 +37,7 @@ class TodoModel {
             params.push(attribute, todo[attribute])
         }
 
-        const stmt = `UPDATE todos SET ${fields.join(', ')} WHERE id = ?`
+        const stmt = `UPDATE message SET ${fields.join(', ')} WHERE id = ?`
         return database.query(stmt, [...params, parseInt(id)])
     }
 }
