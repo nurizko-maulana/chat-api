@@ -1,11 +1,13 @@
 const port = process.env.PORT || 3002
 const express = require('express')
+var cors = require('cors')
 const messageRouter = require('./controllers/messages_controller')
 const userRouter = require('./controllers/users_controller')
 
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 
 app.get('/', (req, res, next) => res.send(`Server is running on port ${port}`));
