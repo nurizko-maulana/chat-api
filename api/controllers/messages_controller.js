@@ -1,5 +1,6 @@
 const todosModel = require('../models/messages_model')
 const express = require('express')
+bodyParser = require('body-parser').json()
 const router = express.Router()
 
 // Get all todos
@@ -27,7 +28,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 // Create a new todo
-router.post('/', async (req, res, next) => {
+router.post('/', bodyParser , async (req, res, next) => {
     try {
         const createResult = await todosModel.create(req.body)
         if (!createResult.affectedRows) return res.sendStatus(409)

@@ -17,10 +17,11 @@ class TodoModel {
 
     async getById(id) {
         const rows = await database.query('SELECT * FROM message WHERE id = ?', [id])
-        return rows[0]
+        return rows
     }
 
     create(todo) {
+        console.log(todo)
         return database.query('INSERT INTO message (text, user) VALUES (?, ?)', [todo.text, todo.user])
     }
 
