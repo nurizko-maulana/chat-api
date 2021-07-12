@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 // Get all users
-router.get('/messages/:id', async (req, res, next) => {
+router.get('/message/:id', async (req, res, next) => {
     try {
 
         const result = await usersModel.getMessages(req.params.id)
