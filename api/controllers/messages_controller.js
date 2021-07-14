@@ -3,7 +3,7 @@ const express = require('express')
 bodyParser = require('body-parser').json()
 const router = express.Router()
 
-// Get all todos
+
 router.get('/', async (req, res, next) => {
     try {
 
@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-// Get one todo
+
 router.get('/:id', async (req, res, next) => {
     try {
         const result = await todosModel.getById(req.params.id)
@@ -27,7 +27,7 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-// Create a new todo
+
 router.post('/', bodyParser , async (req, res, next) => {
     try {
         const createResult = await todosModel.create(req.body)
@@ -41,7 +41,7 @@ router.post('/', bodyParser , async (req, res, next) => {
     }
 })
 
-// Delete a todo
+
 router.delete('/:id', async (req, res, next) => {
     try {
         const result = await todosModel.delete(req.params.id)
@@ -53,7 +53,7 @@ router.delete('/:id', async (req, res, next) => {
     }
 })
 
-// Update a todo
+
 router.patch('/:id', async (req, res, next) => {
     try {
         const updateResult = await todosModel.update(req.params.id, req.body)
